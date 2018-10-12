@@ -1,0 +1,20 @@
+{
+  "name": "JoseChan/Pager",
+  "type": "project",
+  "license": "LGPL",
+  "minimum-stability": "stable",
+  "keywords": [
+    "Pager"
+  ],
+  "authors": [
+    {
+      "name": "JoseChan",
+      "email": "524233828@qq.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "JoseChan\\Pager\\": "src"
+    }
+  }
+}
