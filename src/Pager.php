@@ -19,17 +19,23 @@ class Pager {
     public function getPager($total_count)
     {
         $this->total_page = ceil( $total_count / $this->size);
-        return $total_count > $this->size ? [
-            'total_count'	=>	$total_count,
-            'page_size'		=>	$this->size,
-            'total_page'	=>	$this->total_page,
-            'first_page'	=>	1,
+
+        if($this->page == $this->total_page){
+            $count =  $total_count % $this->size;
+        }else if($this->page > $this->total_page){
+            $count = 0;
+        }else{
+            $count = $this->size;
+        }
+
+        return [
+            'total'	=>	$total_count,
+            'count'	=>	$count,
+            'per_page'		=>	$this->size,
+            'current_page'	=>	$this->page,
+            'total_pages'	=>	$this->total_page,
             'prev_page'		=>	((1 == $this->page) ? 1 : ($this->page - 1)),
             'next_page'		=>	(($this->page == $this->total_page ) ? $this->total_page : ($this->page + 1)),
-            'last_page'		=>	$this->total_page,
-            'current_page'	=>	$this->page
-        ] : [
-            'total_count' => $total_count
         ];
     }
 
